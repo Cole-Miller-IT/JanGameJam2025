@@ -5,29 +5,33 @@
 [ext_resource type="Texture2D" uid="uid://c3ekcyqcqnlkt" path="res://Assets/Images/HealthBar/Progress.png" id="3_owcrr"]
 [ext_resource type="Texture2D" uid="uid://daoehsxvg7jti" path="res://Assets/Images/GoldCoins.png" id="4_bowi0"]
 
-[node name="HUD" type="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer"]
 offset_right = 1152.0
-offset_bottom = 40.0
+offset_bottom = 68.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HUD" type="MarginContainer" parent="."]
 layout_mode = 2
 
-[node name="Bars" type="VBoxContainer" parent="HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
 layout_mode = 2
 
-[node name="HP" type="HBoxContainer" parent="HBoxContainer/Bars"]
+[node name="Bars" type="VBoxContainer" parent="HUD/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HP" type="HBoxContainer" parent="HUD/HBoxContainer/Bars"]
 layout_mode = 2
 
-[node name="Stat" type="Label" parent="HBoxContainer/Bars/HP"]
+[node name="Stat" type="Label" parent="HUD/HBoxContainer/Bars/HP"]
 layout_mode = 2
 text = "Health"
 
-[node name="Value" type="Label" parent="HBoxContainer/Bars/HP"]
+[node name="Value" type="Label" parent="HUD/HBoxContainer/Bars/HP"]
 layout_mode = 2
 text = "50
 "
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer/Bars/HP"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HUD/HBoxContainer/Bars/HP"]
 layout_mode = 2
 value = 50.0
 texture_under = ExtResource("1_kr0iv")
@@ -35,19 +39,19 @@ texture_over = ExtResource("2_f3jjf")
 texture_progress = ExtResource("3_owcrr")
 tint_progress = Color(0.133333, 1, 0.129412, 1)
 
-[node name="Energy" type="HBoxContainer" parent="HBoxContainer/Bars"]
+[node name="Energy" type="HBoxContainer" parent="HUD/HBoxContainer/Bars"]
 layout_mode = 2
 
-[node name="Stat" type="Label" parent="HBoxContainer/Bars/Energy"]
+[node name="Stat" type="Label" parent="HUD/HBoxContainer/Bars/Energy"]
 layout_mode = 2
 text = "Energy"
 
-[node name="Value" type="Label" parent="HBoxContainer/Bars/Energy"]
+[node name="Value" type="Label" parent="HUD/HBoxContainer/Bars/Energy"]
 layout_mode = 2
 text = "50
 "
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer/Bars/Energy"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HUD/HBoxContainer/Bars/Energy"]
 layout_mode = 2
 value = 50.0
 texture_under = ExtResource("1_kr0iv")
@@ -55,24 +59,48 @@ texture_over = ExtResource("2_f3jjf")
 texture_progress = ExtResource("3_owcrr")
 tint_progress = Color(1, 1, 0.129412, 1)
 
-[node name="Counters" type="HBoxContainer" parent="HBoxContainer"]
+[node name="Counters" type="HBoxContainer" parent="HUD/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="Background" type="NinePatchRect" parent="HBoxContainer/Counters"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/HBoxContainer/Counters"]
 layout_mode = 2
-texture = ExtResource("1_kr0iv")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Counters/Background"]
-layout_mode = 0
-offset_right = 63.0
-offset_bottom = 40.0
-
-[node name="Value" type="Label" parent="HBoxContainer/Counters/Background/HBoxContainer"]
+[node name="Value" type="Label" parent="HUD/HBoxContainer/Counters/HBoxContainer"]
 layout_mode = 2
 text = "10"
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Counters/Background/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="HUD/HBoxContainer/Counters/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_bowi0")
 expand_mode = 2
+
+[node name="Empty" type="Panel" parent="."]
+layout_mode = 2
+
+[node name="HotBar" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HotBar"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Slot1" type="Button" parent="HotBar/HBoxContainer"]
+layout_mode = 2
+text = "Inv 1"
+
+[node name="Slot2" type="Button" parent="HotBar/HBoxContainer"]
+layout_mode = 2
+text = "Inv 2"
+
+[node name="Slot3" type="Button" parent="HotBar/HBoxContainer"]
+layout_mode = 2
+text = "Inv 3"
+
+[node name="Slot4" type="Button" parent="HotBar/HBoxContainer"]
+layout_mode = 2
+text = "Inv 4"
+
+[node name="Slot5" type="Button" parent="HotBar/HBoxContainer"]
+layout_mode = 2
+text = "Inv 5"
