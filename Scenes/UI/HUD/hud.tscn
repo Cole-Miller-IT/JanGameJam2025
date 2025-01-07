@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpuyqxjrgojdi"]
+[gd_scene load_steps=6 format=3 uid="uid://dpuyqxjrgojdi"]
 
 [ext_resource type="Texture2D" uid="uid://c7vmhysdtlgg2" path="res://Assets/Images/HealthBar/Under.png" id="1_kr0iv"]
 [ext_resource type="Texture2D" uid="uid://vwm63d0xeay8" path="res://Assets/Images/HealthBar/Over.png" id="2_f3jjf"]
 [ext_resource type="Texture2D" uid="uid://c3ekcyqcqnlkt" path="res://Assets/Images/HealthBar/Progress.png" id="3_owcrr"]
 [ext_resource type="Texture2D" uid="uid://daoehsxvg7jti" path="res://Assets/Images/GoldCoins.png" id="4_bowi0"]
+[ext_resource type="Texture2D" uid="uid://b8gwjtp7ytu2w" path="res://Assets/Images/Inventory/InvEmptyIcon.png" id="5_w3mv8"]
 
 [node name="VBoxContainer" type="VBoxContainer"]
 offset_right = 1152.0
-offset_bottom = 68.0
+offset_bottom = 648.0
 
 [node name="HUD" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -75,8 +76,9 @@ layout_mode = 2
 texture = ExtResource("4_bowi0")
 expand_mode = 2
 
-[node name="Empty" type="Panel" parent="."]
+[node name="Empty Spacing" type="VBoxContainer" parent="."]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="HotBar" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -87,20 +89,21 @@ size_flags_horizontal = 4
 
 [node name="Slot1" type="Button" parent="HotBar/HBoxContainer"]
 layout_mode = 2
-text = "Inv 1"
+theme_override_constants/outline_size = 20
+icon = ExtResource("5_w3mv8")
 
 [node name="Slot2" type="Button" parent="HotBar/HBoxContainer"]
 layout_mode = 2
-text = "Inv 2"
+icon = ExtResource("4_bowi0")
 
 [node name="Slot3" type="Button" parent="HotBar/HBoxContainer"]
 layout_mode = 2
-text = "Inv 3"
+icon = ExtResource("4_bowi0")
 
 [node name="Slot4" type="Button" parent="HotBar/HBoxContainer"]
 layout_mode = 2
-text = "Inv 4"
+icon = ExtResource("4_bowi0")
 
 [node name="Slot5" type="Button" parent="HotBar/HBoxContainer"]
 layout_mode = 2
-text = "Inv 5"
+icon = ExtResource("4_bowi0")
