@@ -111,3 +111,7 @@ layout_mode = 2
 icon = ExtResource("4_bowi0")
 
 [connection signal="pressed" from="HotBar/HBoxContainer/Slot1" to="." method="_on_slot_1_pressed"]
+[connection signal="pressed" from="HotBar/HBoxContainer/Slot2" to="." method="_on_slot_2_pressed"]
+[connection signal="pressed" from="HotBar/HBoxContainer/Slot3" to="." method="_on_slot_3_pressed"]
+[connection signal="pressed" from="HotBar/HBoxContainer/Slot4" to="." method="_on_slot_4_pressed"]
+[connection signal="pressed" from="HotBar/HBoxContainer/Slot5" to="." method="_on_slot_5_pressed"]
