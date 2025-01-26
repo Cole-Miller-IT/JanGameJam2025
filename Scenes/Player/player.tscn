@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://duer6vi3o38eh"]
+
+[ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_nat41"]
+[ext_resource type="Script" path="res://Scenes/StateMachine/Finite State Machine.gd" id="2_ft4ic"]
+[ext_resource type="Texture2D" uid="uid://dweafasm4b2rh" path="res://icon.svg" id="2_t3lte"]
+[ext_resource type="Script" path="res://Scenes/Player/MoveStates/idle.gd" id="3_qkui0"]
+[ext_resource type="Script" path="res://Scenes/Player/ActionStates/idle_action.gd" id="4_s1m6m"]
+[ext_resource type="Script" path="res://Scenes/Player/MoveStates/Walk.gd" id="5_8l2vv"]
+[ext_resource type="Script" path="res://Scenes/Player/MoveStates/die.gd" id="6_514mp"]
+[ext_resource type="Script" path="res://Scenes/Player/ActionStates/light_attack.gd" id="8_bfer7"]
+[ext_resource type="Script" path="res://Scenes/Player/ActionStates/die_action.gd" id="9_0oyhd"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_nat41")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_t3lte")
+
+[node name="Area2DHitbox" type="Area2D" parent="."]
+
+[node name="MovementStateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("2_ft4ic")
+starting_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("walk_state")]
+script = ExtResource("3_qkui0")
+walk_state = NodePath("../Walk")
+
+[node name="Walk" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("idle_state")]
+script = ExtResource("5_8l2vv")
+idle_state = NodePath("../Idle")
+
+[node name="Die" type="Node" parent="MovementStateMachine"]
+script = ExtResource("6_514mp")
+
+[node name="ActionStateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("2_ft4ic")
+starting_state = NodePath("IdleAction")
+
+[node name="IdleAction" type="Node" parent="ActionStateMachine" node_paths=PackedStringArray("light_attack_state", "die_state")]
+script = ExtResource("4_s1m6m")
+light_attack_state = NodePath("../LightAttack")
+die_state = NodePath("../DieAction")
+
+[node name="LightAttack" type="Node" parent="ActionStateMachine" node_paths=PackedStringArray("idle_state", "die_state")]
+script = ExtResource("8_bfer7")
+idle_state = NodePath("../IdleAction")
+die_state = NodePath("../DieAction")
+
+[node name="DieAction" type="Node" parent="ActionStateMachine"]
+script = ExtResource("9_0oyhd")
