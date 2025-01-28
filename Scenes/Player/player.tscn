@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://duer6vi3o38eh"]
+[gd_scene load_steps=14 format=3 uid="uid://duer6vi3o38eh"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_nat41"]
 [ext_resource type="Script" path="res://Scenes/StateMachine/Finite State Machine.gd" id="2_ft4ic"]
@@ -9,16 +9,24 @@
 [ext_resource type="Script" path="res://Scenes/Player/MoveStates/die.gd" id="6_514mp"]
 [ext_resource type="Script" path="res://Scenes/Player/ActionStates/light_attack.gd" id="8_bfer7"]
 [ext_resource type="Script" path="res://Scenes/Player/ActionStates/die_action.gd" id="9_0oyhd"]
+[ext_resource type="PackedScene" uid="uid://doqtjwyne5dbw" path="res://Scenes/HitboxAndHurtbox/hurtbox.tscn" id="10_x5ps0"]
+[ext_resource type="PackedScene" uid="uid://gy0wep6lq3su" path="res://Scenes/HitboxAndHurtbox/hitbox.tscn" id="11_m6pjx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uijew"]
+radius = 64.0
+height = 128.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wq3og"]
+size = Vector2(66, 98)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_nat41")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_t3lte")
-
-[node name="Area2DHitbox" type="Area2D" parent="."]
 
 [node name="MovementStateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("2_ft4ic")
@@ -51,3 +59,18 @@ die_state = NodePath("../DieAction")
 
 [node name="DieAction" type="Node" parent="ActionStateMachine"]
 script = ExtResource("9_0oyhd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_uijew")
+
+[node name="HurtBox" parent="." instance=ExtResource("10_x5ps0")]
+collision_layer = 4
+
+[node name="Hitbox" parent="." instance=ExtResource("11_m6pjx")]
+collision_layer = 8
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(120, 0)
+shape = SubResource("RectangleShape2D_wq3og")
+
+[editable path="Hitbox"]
