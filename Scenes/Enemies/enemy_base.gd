@@ -4,7 +4,6 @@ class_name EnemyBase
 var health = 100
 
 
-
 func take_damage():
 	queue_free()
 

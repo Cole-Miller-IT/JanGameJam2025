@@ -5,7 +5,7 @@ extends State
 #@export var bulletTime_move_state: State
 #@export var die_state: State
 
-var SPEED = 50
+var SPEED = 100
 
 func enter() -> void:
 	#parent.animations.play(animation_name)

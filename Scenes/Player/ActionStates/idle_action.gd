@@ -15,15 +15,6 @@ func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed('lightAttack'):
 		return light_attack_state
 		
-		
-	#if Input.is_action_just_pressed('die'):
-		#return die_state	
-		
-	#if Input.is_action_just_pressed('ui_cancel'):
-		#print("pause")
-		
-		#show overlay
-		#parent.emit_signal("pauseMenuKeyPressed")
 	
 	return null
 
